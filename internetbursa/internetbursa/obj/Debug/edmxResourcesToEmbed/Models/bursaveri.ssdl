@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="bursaveri.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ilcelerr">
+    <Key>
+      <PropertyRef Name="ilce_id" />
+    </Key>
+    <Property Name="ilce_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ilce_ad" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="link" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="kullanicilar">
+    <Key>
+      <PropertyRef Name="kullanici_id" />
+    </Key>
+    <Property Name="kullanici_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ad_soyad" Type="varchar" MaxLength="50" />
+    <Property Name="email" Type="varchar" MaxLength="50" />
+    <Property Name="sifre" Type="varchar" MaxLength="50" />
+    <Property Name="rol" Type="int" />
+  </EntityType>
+  <EntityType Name="nufusdagilim">
+    <Key>
+      <PropertyRef Name="nufus_dagilim" />
+    </Key>
+    <Property Name="nufus_dagilim" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="yil" Type="int" Nullable="false" />
+    <Property Name="nufus" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="resimlerr">
+    <Key>
+      <PropertyRef Name="resimid" />
+    </Key>
+    <Property Name="resimid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="resim_url" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="resim" Type="image" Nullable="false" />
+  </EntityType>
+  <EntityType Name="roller">
+    <Key>
+      <PropertyRef Name="rolid" />
+    </Key>
+    <Property Name="rolid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="rolAd" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="turistikyerler">
+    <Key>
+      <PropertyRef Name="turistik_yer_id" />
+    </Key>
+    <Property Name="turistik_yer_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="yer_ad" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="aciklama" Type="text" />
+    <Property Name="konum" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <Association Name="FK_kullanicilar_roller">
+    <End Role="roller" Type="Self.roller" Multiplicity="0..1" />
+    <End Role="kullanicilar" Type="Self.kullanicilar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="roller">
+        <PropertyRef Name="rolid" />
+      </Principal>
+      <Dependent Role="kullanicilar">
+        <PropertyRef Name="rol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="bursaveriStoreContainer">
+    <EntitySet Name="ilcelerr" EntityType="Self.ilcelerr" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="kullanicilar" EntityType="Self.kullanicilar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="nufusdagilim" EntityType="Self.nufusdagilim" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="resimlerr" EntityType="Self.resimlerr" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="roller" EntityType="Self.roller" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="turistikyerler" EntityType="Self.turistikyerler" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_kullanicilar_roller" Association="Self.FK_kullanicilar_roller">
+      <End Role="roller" EntitySet="roller" />
+      <End Role="kullanicilar" EntitySet="kullanicilar" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

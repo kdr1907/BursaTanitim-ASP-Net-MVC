@@ -1,0 +1,26 @@
+﻿@model internetbursa.Models.nufusdagilim
+
+@{
+    ViewBag.Title = "Yeni Nüfus Dağılımı Ekle";
+}
+
+<h2>Yeni Nüfus Dağılımı Ekle</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.yil)
+        @Html.TextBoxFor(model => model.yil, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.yil)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.nufus)
+        @Html.TextBoxFor(model => model.nufus, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.nufus)
+    </div>
+
+    <button type="submit" class="btn btn-success">Kaydet</button>
+}

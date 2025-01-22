@@ -1,0 +1,26 @@
+﻿@model internetbursa.Models.nufusdagilim
+
+@{
+    ViewBag.Title = "Nüfus Dağılımı Düzenle";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(m => m.nufus_dagilim) 
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.yil)
+        @Html.TextBoxFor(m => m.yil, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.nufus)
+        @Html.TextBoxFor(m => m.nufus, new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Güncelle</button>
+}

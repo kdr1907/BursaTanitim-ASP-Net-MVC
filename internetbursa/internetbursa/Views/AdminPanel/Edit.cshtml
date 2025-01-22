@@ -1,0 +1,22 @@
+﻿@model internetbursa.Models.turistikyerler
+
+<h2>Turistik Yer Düzenle</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.turistik_yer_id)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.yer_ad)
+        @Html.TextBoxFor(model => model.yer_ad, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.aciklama)
+        @Html.TextAreaFor(model => model.aciklama, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.konum)
+        @Html.TextBoxFor(model => model.konum, new { @class = "form-control" })
+    </div>
+    <button type="submit" class="btn btn-primary">Kaydet</button>
+}

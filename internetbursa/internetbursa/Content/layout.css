@@ -1,0 +1,89 @@
+﻿
+
+.carousel-item img {
+    height: 400px; /* Resmi küçülttüm */
+    object-fit: cover;
+    border-radius: 15px; /* Kenarları yumuşattım */
+}
+
+.about-section {
+    padding: 50px 0;
+    background-color: #f4f4f9; /* Hafif bir arka plan rengi ekledim */
+}
+
+    .about-section p {
+        padding-right: 15px;
+        padding-left: 15px;
+        font-size: 1.1em;
+        color: #333; /* Paragraf metinlerine rahat okuma için padding ve renk ekledim */
+    }
+
+    .about-section h2 {
+        padding-left: 15px;
+        padding-right: 15px;
+        color: #007bff; /* Hakkında başlığını vurguladım */
+    }
+
+.card-title {
+    font-weight: bold;
+    color: #007bff; /* Vurgulamak için başlığa renk ekledim */
+}
+
+.card-text {
+    font-size: 1.1em;
+    color: #333; /* Daha koyu renkle yazıyı vurguladım */
+}
+
+.btn-primary {
+    background-color: #0056b3;
+    border-color: #004085;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+    padding: 10px 20px;
+    font-size: 1.2em; /* Butonun boyutunu büyüttüm */
+}
+
+    .btn-primary:hover {
+        background-color: #004085; /* Butona hover efekti ekledim */
+        border-color: #003366;
+    }
+
+.about-card {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Kartlara hafif gölge ekledim */
+    border-radius: 8px;
+}
+
+.navbar {
+    background-color: #007bff; /* Navigasyon barına renk verdim */
+}
+
+.navbar-brand, .nav-link {
+    color: white !important; /* Menüdeki metinleri beyaz yaptım */
+}
+
+.navbar-nav .nav-item.active .nav-link {
+    color: #ffb400 !important; /* Aktif menü elemanına renk ekledim */
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.5); /* Okları sadeleştirip transparan hale getirdim */
+    border-radius: 50%; /* Okları yuvarlak yaptım */
+}
+
+.container h2 {
+    color: #007bff; /* Hakkında başlığını vurguladım */
+}
+
+.navbar-nav .nav-item {
+    margin-left: 20px; /* Menü öğelerine biraz boşluk ekledim */
+}
+
+.user-link {
+    color: #28a745; /* Kullanıcı adı, giriş ve çıkış yazılarına yeşil renk ekledim */
+    font-weight: bold;
+}
+
+.navbar-nav .nav-item a {
+    font-weight: bold;
+    font-size: 1.1em;
+}

@@ -1,0 +1,41 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/logincss.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="login-card">
+        <div class="text-center mb-4">
+            <h3 class="text-success">Bursa'ya Hoş Geldiniz!</h3>
+            <p class="text-muted">Lütfen giriş yapın</p>
+        </div>
+        <form action="/Login/Index" method="post">
+            <div class="form-group">
+                <label for="Username">E-posta</label>
+                <input type="text" id="Username" name="Username" class="form-control" placeholder="E-posta" required>
+            </div>
+            <div class="form-group">
+                <label for="Password">Şifre</label>
+                <input type="password" id="Password" name="Password" class="form-control" placeholder="Şifre" required>
+            </div>
+            <div class="text-danger">
+                @ViewBag.ErrorMessage
+            </div>
+            <button type="submit" class="btn btn-success btn-block mt-3">Giriş Yap</button>
+        </form>
+        <div class="link-container">
+            <a href="/Login/Register" class="btn btn-outline-success btn-block">Kayıt Ol</a>
+        </div>
+    </div>
+</body>
+</html>
+
+

@@ -1,0 +1,39 @@
+﻿@model IEnumerable<internetbursa.Models.turistikyerler>
+
+@{
+    ViewBag.Title = "Turistik Yerler";
+}
+
+<h2>Turistik Yerler</h2>
+
+
+
+    <p>
+        <a href="@Url.Action("Create", "AdminPanel")" class="btn btn-success">Yeni Turistik Yer Ekle</a>
+    </p>
+
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Yer Adı</th>
+            <th>Açıklama</th>
+            <th>Konum</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var place in Model)
+        {
+            <tr>
+                <td>@place.yer_ad</td>
+                <td>@place.aciklama</td>
+                <td>@place.konum</td>
+                <td>
+                    <a href="@Url.Action("Edit", "AdminPanel", new { id = place.turistik_yer_id })" class="btn btn-warning">Düzenle</a>
+                    <a href="@Url.Action("Delete", "AdminPanel", new { id = place.turistik_yer_id })" class="btn btn-danger" onclick="return confirm('Bu turistik yeri silmek istediğinizden emin misiniz?')">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

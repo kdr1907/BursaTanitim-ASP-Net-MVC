@@ -1,0 +1,40 @@
+﻿@model IEnumerable<internetbursa.Models.nufusdagilim>
+
+@{
+    ViewBag.Title = "Nüfus Dağılımı";
+}
+
+<h2>Nüfus Dağılımı</h2>
+
+<p>
+    
+    
+        @Html.ActionLink("Yeni Nüfus Dağılımı Ekle", "CreatePopulation", null, new { @class = "btn btn-primary" })
+    
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Yıl</th>
+            <th>Nüfus</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.yil</td>
+                <td>@item.nufus</td>
+                <td>
+                    @if (Session["UserRole"] != null && Session["UserRole"].ToString() == "Admin")
+                    {
+                        @Html.ActionLink("Düzenle", "EditPopulation", new { id = item.nufus_dagilim }, new { @class = "btn btn-warning" })
+                        @Html.ActionLink("Sil", "DeletePopulation", new { id = item.nufus_dagilim }, new { @class = "btn btn-danger", onclick = "return confirm('Bu kaydı silmek istediğinizden emin misiniz?');" })
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

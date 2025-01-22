@@ -1,0 +1,51 @@
+﻿body {
+    background: linear-gradient(to bottom, #ffffff, #4caf50); /* Green and white gradient */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #ffffff;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.95); /* Slightly transparent background */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+    .login-card h3 {
+        margin-bottom: 10px;
+    }
+
+    .login-card p {
+        margin-bottom: 20px;
+    }
+
+.btn-success {
+    background-color: #28a745;
+    border: none;
+}
+
+    .btn-success:hover {
+        background-color: #218838;
+    }
+
+.btn-outline-success {
+    border-color: #28a745;
+    color: #28a745;
+}
+
+    .btn-outline-success:hover {
+        background-color: #28a745;
+        color: #fff;
+    }
+
+.link-container {
+    text-align: center;
+    margin-top: 15px;
+}

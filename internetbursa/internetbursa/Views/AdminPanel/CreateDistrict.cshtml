@@ -1,0 +1,23 @@
+﻿@model internetbursa.Models.ilcelerr
+
+@{
+    ViewBag.Title = "Yeni İlçe Ekle";
+}
+
+<h2>Yeni İlçe Ekle</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.ilce_ad)
+        @Html.TextBoxFor(m => m.ilce_ad, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.link)
+        @Html.TextBoxFor(m => m.link, new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Kaydet</button>
+}

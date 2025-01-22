@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="bursaveri" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ilcelerr">
+    <Key>
+      <PropertyRef Name="ilce_id" />
+    </Key>
+    <Property Name="ilce_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ilce_ad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="link" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="kullanicilar">
+    <Key>
+      <PropertyRef Name="kullanici_id" />
+    </Key>
+    <Property Name="kullanici_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ad_soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="rol" Type="Int32" />
+    <NavigationProperty Name="roller" Relationship="bursaveri.FK_kullanicilar_roller" FromRole="kullanicilar" ToRole="roller" />
+  </EntityType>
+  <EntityType Name="nufusdagilim">
+    <Key>
+      <PropertyRef Name="nufus_dagilim" />
+    </Key>
+    <Property Name="nufus_dagilim" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="yil" Type="Int32" Nullable="false" />
+    <Property Name="nufus" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="resimlerr">
+    <Key>
+      <PropertyRef Name="resimid" />
+    </Key>
+    <Property Name="resimid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="resim_url" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="resim" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="turistikyerler">
+    <Key>
+      <PropertyRef Name="turistik_yer_id" />
+    </Key>
+    <Property Name="turistik_yer_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="yer_ad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="konum" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="intDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ilcelerr" EntityType="Self.ilcelerr" />
+    <EntitySet Name="kullanicilar" EntityType="Self.kullanicilar" />
+    <EntitySet Name="nufusdagilim" EntityType="Self.nufusdagilim" />
+    <EntitySet Name="resimlerr" EntityType="Self.resimlerr" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="turistikyerler" EntityType="Self.turistikyerler" />
+    <EntitySet Name="roller" EntityType="bursaveri.roller" />
+    <AssociationSet Name="FK_kullanicilar_roller" Association="bursaveri.FK_kullanicilar_roller">
+      <End Role="roller" EntitySet="roller" />
+      <End Role="kullanicilar" EntitySet="kullanicilar" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="roller">
+    <Key>
+      <PropertyRef Name="rolid" />
+    </Key>
+    <Property Name="rolid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="rolAd" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="kullanicilar" Relationship="bursaveri.FK_kullanicilar_roller" FromRole="roller" ToRole="kullanicilar" />
+  </EntityType>
+  <Association Name="FK_kullanicilar_roller">
+    <End Type="bursaveri.roller" Role="roller" Multiplicity="0..1" />
+    <End Type="bursaveri.kullanicilar" Role="kullanicilar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="roller">
+        <PropertyRef Name="rolid" />
+      </Principal>
+      <Dependent Role="kullanicilar">
+        <PropertyRef Name="rol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

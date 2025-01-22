@@ -1,0 +1,23 @@
+﻿@model internetbursa.Models.nufusdagilim
+
+@{
+    ViewBag.Title = "Nüfus Dağılımı Sil";
+}
+
+<h2>Nüfus Dağılımı Sil</h2>
+
+<div>
+    <h4>Bu kaydı silmek istediğinizden emin misiniz?</h4>
+    <div>
+        <h4>Yıl: @Model.yil</h4>
+        <h4>Nüfus: @Model.nufus</h4>
+    </div>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <button type="submit" class="btn btn-danger">Evet, Sil</button>
+    @Html.ActionLink("Hayır", "Population", null, new { @class = "btn btn-secondary" })
+}

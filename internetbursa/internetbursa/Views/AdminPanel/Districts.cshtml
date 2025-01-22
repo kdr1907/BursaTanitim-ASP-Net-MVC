@@ -1,0 +1,33 @@
+﻿@model IEnumerable<internetbursa.Models.ilcelerr>
+
+
+
+<h2>İlçeler Yönetim</h2>
+
+<p>
+    <a href="@Url.Action("CreateDistrict", "AdminPanel")" class="btn btn-success">Yeni İlçe Ekle</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>İlçe Adı</th>
+            <th>Link</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var district in Model)
+        {
+            <tr>
+                <td>@district.ilce_ad</td>
+                <td>@district.link</td>
+                <td>
+
+                    <a href="@Url.Action("EditDistrict", "AdminPanel", new { id = district.ilce_id })" class="btn btn-warning">Düzenle</a>
+                    <a href="@Url.Action("DeleteDistrict", "AdminPanel", new { id = district.ilce_id })" class="btn btn-danger" onclick="return confirm('Bu ilçeyi silmek istediğinizden emin misiniz?');">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

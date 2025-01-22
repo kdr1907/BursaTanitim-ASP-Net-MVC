@@ -1,0 +1,23 @@
+﻿@model List<internetbursa.Models.PopulationDistribution>
+
+<div class="container my-4">
+    <h2 class="text-center text-success">Bursa Nüfus Dağılımı (Son 3 Yıl)</h2>
+    <br />
+    <table class="table table-striped table-bordered table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>Yıl</th>
+                <th>Nüfus</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Year</td>
+                    <td>@item.Population</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

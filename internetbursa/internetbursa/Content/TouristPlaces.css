@@ -1,0 +1,33 @@
+﻿body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f9fa;
+}
+
+h2 {
+    font-weight: 700;
+}
+
+.card {
+    transition: transform 0.3s ease-in-out;
+}
+
+    .card:hover {
+        transform: scale(1.05); /* Kartın hover efekti ile biraz büyümesi */
+    }
+
+.btn-warning {
+    transition: background-color 0.3s ease-in-out;
+}
+
+    .btn-warning:hover {
+        background-color: #f8b800; /* Hover durumunda buton rengi değişir */
+    }
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+.container {
+    margin-top: 30px;
+}

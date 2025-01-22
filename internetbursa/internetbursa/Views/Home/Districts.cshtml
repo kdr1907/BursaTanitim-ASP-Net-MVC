@@ -1,0 +1,36 @@
+﻿@model List<internetbursa.Models.District>
+
+<div class="container my-4">
+    <h2 class="text-center text-success">Bursa İlçeleri</h2>
+    <table class="table table-striped table-bordered table-hover">
+        <thead class="bg-primary text-white">
+            <tr>
+                
+                <th>İlçe Adı</th>
+                <th>Tanıtım Linki</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var district in Model)
+            {
+                <tr>
+                    
+                    <td>@district.IlceAd</td>
+                    <td>
+                        @if (!string.IsNullOrEmpty(district.Link))
+                        {
+                            <a href="@district.Link" target="_blank" class="btn btn-sm btn-outline-success">
+                                <i class="fas fa-link"></i> Tanıtım Sitesi
+                            </a>
+                        }
+                        else
+                        {
+                            <span class="text-muted">Link mevcut değil</span>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

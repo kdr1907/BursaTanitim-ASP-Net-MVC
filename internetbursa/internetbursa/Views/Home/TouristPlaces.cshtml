@@ -1,0 +1,37 @@
+﻿@model List<internetbursa.Models.TouristPlace>
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"> <!-- Google Font -->
+
+<h2 class="text-center mb-5 text-success">Bursa'nın Tarihi ve Turistik Yerleri</h2>
+<link href="~/Content/TouristPlaces.css" rel="stylesheet" />
+<script src="~/Scripts/TouristPlaces.js"></script>
+
+<div class="container">
+    <div class="row">
+        @foreach (var place in Model)
+        {
+            // YerAd'ı güvenli hale getiriyoruz (boşlukları ve özel karakterleri kaldırıyoruz)
+            var safeYerAd = place.YerAd.Replace(" ", "_").Replace("-", "_");
+
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm border-light rounded">
+                    
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">@place.YerAd</h5>
+                        <p class="card-text text-muted">@place.Aciklama</p>
+                        <button class="btn btn-warning btn-block" onclick="toggleLocation('@safeYerAd')">Konum Göster</button>
+                        <p id="location-@safeYerAd" class="mt-3 text-info" style="display:none;">@place.Konum</p> <!-- Konumu başta gizli tutuyoruz -->
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<script src="~/Scripts/jquery-3.7.0.min.js"></script>
+<script src="~/Scripts/bootstrap.bundle.min.js"></script> 
+
+
+
+
